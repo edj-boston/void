@@ -30,6 +30,7 @@
     "should": "^3.3.1"
   },
   "dependencies": {
-    "aws-sdk": "^2.0.0-rc.14"
+    "aws-sdk": "^2.0.0-rc.14",
+    "jquery-extend": "^2.0.3"
   }
 }
