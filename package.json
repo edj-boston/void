@@ -1,0 +1,32 @@
+{
+  "name": "void",
+  "version": "0.0.1",
+  "description": "Easily invalidate your CloudFront Cache in NodeJS",
+  "main": "void.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/edj-boston/void.git"
+  },
+  "keywords": [
+    "AWS",
+    "CloudFront",
+    "invalidate",
+    "request",
+    "Amazon",
+    "automatic",
+    "asynchronous"
+  ],
+  "author": "Eric Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edj-boston/void/issues"
+  },
+  "homepage": "https://github.com/edj-boston/void",
+  "devDependencies": {
+    "mocha": "^1.4.3",
+    "should": "^3.3.1"
+  }
+}
