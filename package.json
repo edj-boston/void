@@ -2,7 +2,7 @@
   "name": "void",
   "version": "0.0.1",
   "description": "Easily invalidate your CloudFront Cache in NodeJS",
-  "main": "void.js",
+  "main": "./lib/Void.js",
   "scripts": {
     "test": "mocha"
   },
