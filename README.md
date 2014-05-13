@@ -1,4 +1,4 @@
-Void
+Void [![Build Status](https://travis-ci.org/edj-boston/void.svg?branch=master)](https://travis-ci.org/edj-boston/void)
 ====
 
 [Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/teleshenvoidmodule) that intelligently invalidates your CloudFront Cache. It respects the following limitations:
