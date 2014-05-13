@@ -5,15 +5,15 @@ var assert = require('assert'),
 
 describe('AWS credentials', function() {
 
-	it('should throw an error if AWS_ACCESS_KEY_ID is undefined', function() {
+	it('should throw an error if AWS_ACCESS_KEY_ID is undefined in the environment', function() {
 		assert.notEqual(process.env.AWS_ACCESS_KEY_ID, undefined);
 	});
 
-	it('should throw an error if AWS_SECRET_ACCESS_KEY is undefined', function() {
+	it('should throw an error if AWS_SECRET_ACCESS_KEY is undefined in the environment', function() {
 		assert.notEqual(process.env.AWS_SECRET_ACCESS_KEY, undefined );
 	});
 
-	it('should throw an error if DISTRIBUTION_ID is undefined', function() {
+	it('should throw an error if DISTRIBUTION_ID is undefined in the environment', function() {
 		assert.notEqual(process.env.DISTRIBUTION_ID, undefined );
 	});
 
