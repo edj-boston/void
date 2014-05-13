@@ -107,7 +107,7 @@ This will result in the the following console output:
 [Void:IWZ33][Job:JD9ZU] Invalidation "I35PDGSFYBCA1X" completed!
 [Void:IWZ33][Job:H27NL] Invalidation "IVBLZ2PCXZL5Q" completed!
 [Void:IWZ33][Job:7BTD7] Invalidation "I3HRQCLJU7OSZ7" created. Checking in 10 minute(s)...
-[Void:IWZ33][Job:H1C3R] Timeout: stopped checking invalidation after 20 minutes
+[Void:IWZ33][Job:H1C3R] Invalidation "I13B9HSQI6RO7J" completed!
 [Void:IWZ33][Job:7BTD7] In progress, re-checking in 2 minute(s)...
 [Void:IWZ33][Job:7BTD7] Invalidation "I3HRQCLJU7OSZ7" completed!
 [Void:IWZ23] All jobs complete!
