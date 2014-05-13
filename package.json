@@ -1,6 +1,6 @@
 {
   "name": "void",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A NodeJS module that intelligently invalidates your CloudFront Cache.",
   "main": "./lib/Void.js",
   "scripts": {
@@ -14,6 +14,8 @@
     "AWS",
     "CloudFront",
     "invalidate",
+    "cache",
+    "clear",
     "request",
     "Amazon",
     "automatic",
