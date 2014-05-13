@@ -137,7 +137,7 @@ __WARNING:__ Tests will fail unless you have the `AWS_ACCESS_KEY_ID`, `AWS_SECRE
 Notes
 -----
 
-1. You may incur charges if you invalidate your CloudFront cache frequently. PLease see their (documentation)[http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#PayingForInvalidation] and pricing.
+1. You may incur charges if you invalidate your CloudFront cache frequently. PLease see their [documentation](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#PayingForInvalidation) and pricing.
 2. Again… do NOT put your AWS credentials of CloudFront distribution id in source control
 
 
