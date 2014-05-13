@@ -146,6 +146,5 @@ To do
 
 1. More tests
 2. Surface granual `Job` properties in `Void` constructor for more flexibility
-3. Setup Travis CI
-4. `Void` event callbacks
-5. Document `Job` object
+3. `Void` event callbacks
+4. Document `Job` object
