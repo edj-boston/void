@@ -24,9 +24,34 @@ describe('Job', function() {
 		assert.notEqual(job.paths.length, 0);
 	});
 
-	it('should ', function() {
-		var job =  new Job();
-		assert.equal(typeof job.cloudfront, 'object');
+
+	/* *
+	 * Timeouts
+	 */
+
+	it('should timeout while creating the invalidation', function(done) {
+		this.timeout(60000 * 20);
+		var job = new Job({
+			paths : ['/foo/bar.html'],
+			createTimeout : 0.1,
+			createInterval : 0.1,
+			timeout : done
+		}).run();
 	});
+
+	/*it('should timeout while checking the invalidation', function(done) {
+		this.timeout(60000 * 20);
+		var job = new Job({
+			paths : ['/foo/bar.html'],
+			createInterval : 0.1,
+			checkTimeout : 0.1,
+			checkDelay : 0.1,
+			checkInterval : 0.1,
+			timeout : function() {
+				done();
+			}
+		});
+		job.run();
+	});*/
 
 });
