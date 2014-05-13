@@ -1,7 +1,7 @@
 Void
 ====
 
-A NodeJS module that intelligently invalidates your CloudFront Cache. It respects the following limitations:
+[Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/teleshenvoidmodule) that intelligently invalidates your CloudFront Cache. It respects the following limitations:
 
 * Hard limit of 1000 paths per invalidation
 * Only 3 invalidations can run at the same time (and other processes may be creating them too)
@@ -11,9 +11,8 @@ A NodeJS module that intelligently invalidates your CloudFront Cache. It respect
 Installation
 ------------
 
-```
-$ npm install void
-```
+	$ npm install void
+
 
 Void relies on the [AWS-SDK](https://www.npmjs.org/package/aws-sdk), which requires that you set two environment variables:
 
@@ -90,16 +89,29 @@ var v = new Void({
 
 This will result in the the following console output:
 
-	[Void:ATP8N] Created 4 item(s) in the queue
-	[Void:ATP8N][Job:3OOKD] Invalidation "ICHX4H8Q6VY4E" created. Checking in 10 minute(s)...
-	[Void:ATP8N][Job:NMJ33] Invalidation "I18R5EN5BN2XLY" created. Checking in 10 minute(s)...
-	[Void:ATP8N][Job:83RH0] Invalidation "I39XPXXVQM3PKY" created. Checking in 10 minute(s)...
-	[Void:ATP8N][Job:83RH0] Invalidation "I39XPXXVQM3PKY" completed!
-	[Void:ATP8N][Job:NMJ33] Invalidation "I18R5EN5BN2XLY" completed!
-	[Void:ATP8N][Job:2V7EE] Invalidation "I2GCM83QRPS72H" created. Checking in 10 minute(s)...
-	[Void:ATP8N][Job:3OOKD] Invalidation "ICHX4H8Q6VY4E" completed!
-	[Void:ATP8N][Job:2V7EE] Invalidation "I2GCM83QRPS72H" completed!
-	[Void:ATP8N] All jobs complete!
+```
+[Void:IWZ33] Created 4 item(s) in the queue
+[Void:IWZ33][Job:H27NL] Invalidation "IVBLZ2PCXZL5Q" created. Checking in 10 minute(s)...
+[Void:IWZ33][Job:JD9ZU] Invalidation "I35PDGSFYBCA1X" created. Checking in 10 minute(s)...
+[Void:IWZ33][Job:H1C3R] Too many invalidations, retrying in 2 minute(s)
+[Void:IWZ33][Job:H1C3R] Too many invalidations, retrying in 2 minute(s)
+[Void:IWZ33][Job:H1C3R] Too many invalidations, retrying in 2 minute(s)
+[Void:IWZ33][Job:H1C3R] Too many invalidations, retrying in 2 minute(s)
+[Void:IWZ33][Job:H1C3R] Too many invalidations, retrying in 2 minute(s)
+[Void:IWZ33][Job:H27NL] In progress, re-checking in 2 minute(s)...
+[Void:IWZ33][Job:JD9ZU] In progress, re-checking in 2 minute(s)...
+[Void:IWZ33][Job:H1C3R] Too many invalidations, retrying in 2 minute(s)
+[Void:IWZ33][Job:H27NL] In progress, re-checking in 2 minute(s)...
+[Void:IWZ33][Job:JD9ZU] In progress, re-checking in 2 minute(s)...
+[Void:IWZ33][Job:H1C3R] Invalidation "I13B9HSQI6RO7J" created. Checking in 10 minute(s)...
+[Void:IWZ33][Job:JD9ZU] Invalidation "I35PDGSFYBCA1X" completed!
+[Void:IWZ33][Job:H27NL] Invalidation "IVBLZ2PCXZL5Q" completed!
+[Void:IWZ33][Job:7BTD7] Invalidation "I3HRQCLJU7OSZ7" created. Checking in 10 minute(s)...
+[Void:IWZ33][Job:H1C3R] Timeout: stopped checking invalidation after 20 minutes
+[Void:IWZ33][Job:7BTD7] In progress, re-checking in 2 minute(s)...
+[Void:IWZ33][Job:7BTD7] Invalidation "I3HRQCLJU7OSZ7" completed!
+[Void:IWZ23] All jobs complete!
+```
 
 
 Tests
