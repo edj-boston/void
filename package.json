@@ -1,6 +1,6 @@
 {
   "name": "void",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A NodeJS module that intelligently invalidates your CloudFront Cache.",
   "main": "./lib/Void.js",
   "scripts": {
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.0.0-rc.14",
-    "jquery-extend": "^2.0.3"
+    "jquery-extend": "^2.0.3",
+    "file": "^0.2.2"
   }
 }
