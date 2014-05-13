@@ -8,23 +8,6 @@ var assert = require('assert'),
 describe('Void', function() {
 
 	/* *
-	 * Validation
-	 */
-
-	it('should throw an error if distribution is not 14 characters', function() {
-		(function() {
-			new Void({ distribution : '' });
-		}).should.throw('[Void] Distribution id must be a 14 character string');
-	});
-
-	it('should throw an error if distribution is not a string', function() {
-		(function() {
-			new Void({ distribution : {} });
-		}).should.throw('[Void] Distribution id must be a 14 character string');
-	});
-
-
-	/* *
 	 * Queue building
 	 */
 

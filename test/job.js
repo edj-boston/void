@@ -31,10 +31,12 @@ describe('Job', function() {
 
 	it('should timeout while creating the invalidation', function(done) {
 		this.timeout(60000 * 20);
-		var job = new Job({
+		var job1 = new Job();
+		var job2 = new Job({
 			paths : ['/foo/bar.html'],
 			createTimeout : 0.1,
 			createInterval : 0.1,
+			maxJobs : 1,
 			timeout : done
 		}).run();
 	});
