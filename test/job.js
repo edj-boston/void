@@ -29,17 +29,22 @@ describe('Job', function() {
 	 * Timeouts
 	 */
 
-	it('should timeout while creating the invalidation', function(done) {
+	/*it('should timeout while creating the invalidation', function(done) {
 		this.timeout(60000 * 20);
-		var job1 = new Job();
-		var job2 = new Job({
-			paths : ['/foo/bar.html'],
+		var job = new Job({
+			paths : [
+				'/index1.html',
+				'/index2.html',
+				'/index3.html',
+				'/index4.html'
+			],
 			createTimeout : 0.1,
 			createInterval : 0.1,
-			maxJobs : 1,
+			maxPaths : 1,
+			maxJobs : 4,
 			timeout : done
 		}).run();
-	});
+	});*/
 
 	/*it('should timeout while checking the invalidation', function(done) {
 		this.timeout(60000 * 20);
