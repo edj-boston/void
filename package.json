@@ -1,7 +1,7 @@
 {
   "name": "void",
   "version": "0.0.1",
-  "description": "NodeJS module to intelligently and efficiently invalidate your CloudFront Cache, respecting 1000-paths-per-invalidation and 3-simultaneous-invalidations limits.",
+  "description": "A NodeJS module that intelligently invalidates your CloudFront Cache.",
   "main": "./lib/Void.js",
   "scripts": {
     "test": "mocha"
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/edj-boston/void/issues"
   },
-  "homepage": "https://github.com/edj-boston/void",
+  "homepage": "https://voidjs.com",
   "devDependencies": {
     "mocha": "^1.4.3",
     "should": "^3.3.1"
