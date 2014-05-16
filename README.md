@@ -137,14 +137,14 @@ __WARNING:__ Tests will fail unless you have the `AWS_ACCESS_KEY_ID`, `AWS_SECRE
 Notes
 -----
 
-1. You may incur charges if you invalidate your CloudFront cache frequently. PLease see their [documentation](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#PayingForInvalidation) and pricing.
-2. Again… do NOT put your AWS credentials of CloudFront distribution id in source control
+1. You may incur charges if you invalidate your CloudFront cache frequently. Please see their [documentation](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html#PayingForInvalidation) and pricing.
+2. Again… do NOT put your AWS credentials or CloudFront distribution id in source control.
 
 
 To do
 -----
 
 1. More tests
-2. Surface granual `Job` properties in `Void` constructor for more flexibility
+2. Surface granular `Job` properties in `Void` constructor for more flexibility
 3. `Void` event callbacks
 4. Document `Job` object
