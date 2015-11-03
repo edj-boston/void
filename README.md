@@ -1,7 +1,7 @@
 Void [![Build Status](https://travis-ci.org/edj-boston/void.svg?branch=master)](https://travis-ci.org/edj-boston/void)
 ====
 
-[Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/teleshenvoidmodule) that intelligently invalidates your CloudFront Cache. It respects the following limitations:
+[Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/teleshenvoidmodule) that intelligently invalidates your CloudFront Cache. It respects the following CloudFront limitations:
 
 * Hard limit of 1000 paths per invalidation
 * Only 3 invalidations can run at the same time (and other processes may be creating them too)
@@ -144,6 +144,7 @@ Notes
 To do
 -----
 
+1. Istanbul
 1. More tests
 2. Surface granular `Job` properties in `Void` constructor for more flexibility
 3. `Void` event callbacks
