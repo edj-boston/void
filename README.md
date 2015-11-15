@@ -1,7 +1,7 @@
 Void [![Build Status](https://travis-ci.org/edj-boston/void.svg?branch=master)](https://travis-ci.org/edj-boston/void) [![Dependency Status](https://david-dm.org/edj-boston/void.svg)](https://david-dm.org/edj-boston/void)
 ====
 
-[Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/void) that intelligently invalidates your CloudFront Cache. It respects the following CloudFront limitations:
+[Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/void) that intelligently invalidates your CloudFront cache. It respects the following CloudFront limitations:
 
 * Hard limit of 1000 paths per invalidation
 * Only 3 invalidations can run at the same time (and other processes may be creating them too)
@@ -21,16 +21,16 @@ Void relies on the [AWS-SDK](https://www.npmjs.org/package/aws-sdk), which requi
 
 You can [export](http://www.cyberciti.biz/faq/linux-unix-shell-export-command/) them in the shell for local testing or permanent use. You can also load them into your environment using a tool like [supervisor](https://www.npmjs.org/package/supervisor) or [foreman](http://ddollar.github.io/foreman/) to load an .env file.
 
-Follow your hosting provider's instructions for setting environment variables in production:
-
-* [Heroku](https://devcenter.heroku.com/articles/nodejs-support#environment)
-* [AWS Elastic Beanstalk](http://docs.aws.amazon.com/gettingstarted/latest/deploy/envvar.html)
-
 Void requires a third environment variable that contains the CloudFront distribution id:
 
 	DISTRIBUTION_ID
 
 __WARNING:__ Do _not_ place your AWS credentials or CloudFront Distribution ID in source control!
+
+Follow your hosting provider's instructions for setting environment variables in production:
+
+* [Heroku](https://devcenter.heroku.com/articles/nodejs-support#environment)
+* [AWS Elastic Beanstalk](http://docs.aws.amazon.com/gettingstarted/latest/deploy/envvar.html)
 
 
 Usage
@@ -56,7 +56,7 @@ Arguments
 
 * __name:__ will default to a 5 character string for logging
 * __distribution:__ will default to `process.env.DISTRIBUTION_ID`
-* __paths:__ Array of path strings to be cleared
+* __paths:__ Array of path strings to be cleared (this will default to `"/*"` and clear the entire distribution)
 * __dirs:__ Array of directories to be scanned and added to `paths`
 * __poison:__ Array of path strings to be removed from `paths`
 * __maxPaths:__ Max number of paths per invalidation (defaults to 1000)
