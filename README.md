@@ -1,4 +1,4 @@
-Void [![Build Status](https://travis-ci.org/edj-boston/void.svg?branch=master)](https://travis-ci.org/edj-boston/void) [![Dependency Status](https://david-dm.org/edj-boston/void.svg)](https://david-dm.org/edj-boston/void)
+Void [![Build Status](https://travis-ci.org/edj-boston/void.svg?branch=master)](https://travis-ci.org/edj-boston/void) [![Dependency Status](https://david-dm.org/edj-boston/void.svg)](https://david-dm.org/edj-boston/void) [![devDependency Status](https://david-dm.org/edj-boston/void/dev-status.svg)](https://david-dm.org/edj-boston/void#info=devDependencies)
 ====
 
 [Void](https://github.com/edj-boston/void) is a NodeJS [module](https://www.npmjs.org/package/void) that intelligently invalidates your CloudFront cache. It respects the following CloudFront limitations:
