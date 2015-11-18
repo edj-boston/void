@@ -28,8 +28,8 @@
   },
   "homepage": "https://voidjs.com",
   "devDependencies": {
-    "mocha": "^1.4.3",
-    "should": "^3.3.1"
+    "mocha": "^2.3.4",
+    "should": "^7.1.1"
   },
   "dependencies": {
     "aws-sdk": "^2.2.14",
