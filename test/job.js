@@ -1,6 +1,5 @@
 // External dependancies
 var assert = require('assert'),
-	should = require('should'),
 	Job = require('../lib/Job.js'),
 	AWS = require('aws-sdk');
 

@@ -1,6 +1,5 @@
 // External dependancies
 var assert = require('assert'),
-	should = require('should'),
 	Void = require('../lib/Void.js');
 
 

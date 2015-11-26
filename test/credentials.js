@@ -1,6 +1,5 @@
 // External dependancies
-var assert = require('assert'),
-	should = require('should');
+var assert = require('assert');
 
 
 describe('AWS credentials', function() {
