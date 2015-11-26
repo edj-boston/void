@@ -8,57 +8,20 @@ var assert = require('assert'),
 // Constructor
 describe('Job', function() {
 
-	/* *
-	 * Validation
-	 */
+	describe('#construct', function() {
 
-	it('should have a 5 character name property', function() {
-		var job =  new Job;
-		assert.equal(job.name.length, 5);
-	});
-
-	it('should have at least one path item', function() {
-		var job =  new Job({
-			paths : ['/index.html'],
+		it('should have a 5 character name property', function() {
+			var job =  new Job;
+			assert.equal(job.name.length, 5);
 		});
-		assert.notEqual(job.paths.length, 0);
-	});
 
-
-	/* *
-	 * Timeouts
-	 */
-
-	/*it('should timeout while creating the invalidation', function(done) {
-		this.timeout(60000 * 20);
-		var job = new Job({
-			paths : [
-				'/index1.html',
-				'/index2.html',
-				'/index3.html',
-				'/index4.html'
-			],
-			createTimeout : 0.1,
-			createInterval : 0.1,
-			maxPaths : 1,
-			maxJobs : 4,
-			timeout : done
-		}).run();
-	});*/
-
-	/*it('should timeout while checking the invalidation', function(done) {
-		this.timeout(60000 * 20);
-		var job = new Job({
-			paths : ['/foo/bar.html'],
-			createInterval : 0.1,
-			checkTimeout : 0.1,
-			checkDelay : 0.1,
-			checkInterval : 0.1,
-			timeout : function() {
-				done();
-			}
+		it('should have at least one path item', function() {
+			var job =  new Job({
+				paths : ['/index.html'],
+			});
+			assert.notEqual(job.paths.length, 0);
 		});
-		job.run();
-	});*/
+
+	});
 
 });
