@@ -21,4 +21,13 @@ describe('Void#populateQueue', function() {
         v.queue.length.should.equal(5);
     });
 
+    it('should be capable of custom logging', function() {
+        var v = new Void({
+            logger : function(message) {
+                return message;
+            }
+        });
+        v.log('Something').should.equal('[Void:' + v.name + '] Something');
+    });
+
 });
