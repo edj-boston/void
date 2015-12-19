@@ -1,26 +1,20 @@
-// External dependancies
-var assert = require('assert'),
-	Job = require('../lib/Job.js'),
-	AWS = require('aws-sdk');
+var Job    = require('../lib/Job.js'),
+	AWS    = require('aws-sdk'),
+	should = require('should');
 
 
-// Constructor
-describe('Job', function() {
+describe('Job#construct', function() {
 
-	describe('#construct', function() {
+	it('should have a 5 character name property', function() {
+		var job =  new Job;
+		job.name.length.should.equal(5);
+	});
 
-		it('should have a 5 character name property', function() {
-			var job =  new Job;
-			assert.equal(job.name.length, 5);
+	it('should have at least one path item', function() {
+		var job =  new Job({
+			paths : ['/index.html'],
 		});
-
-		it('should have at least one path item', function() {
-			var job =  new Job({
-				paths : ['/index.html'],
-			});
-			assert.notEqual(job.paths.length, 0);
-		});
-
+		job.paths.length.should.not.equal(0);
 	});
 
 });
