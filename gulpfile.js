@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 
 // instrument the code
-gulp.task('cover', ['lint'], function () {
+gulp.task('cover', function () {
     return gulp.src(['lib/*.js'])
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
@@ -34,7 +34,7 @@ gulp.task('coveralls', ['test'], function () {
 
 
 // Lint as JS files (including this one)
-gulp.task('lint', function () {
+gulp.task('lint', ['test'], function () {
     return gulp.src([
             '*.js',
             'lib/*.js',
@@ -44,4 +44,13 @@ gulp.task('lint', function () {
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
+});
+
+
+// Task for local development
+gulp.task('default', ['lint'], function() {
+    gulp.watch([
+        'lib/*',
+        'test/*'
+    ], ['lint']);
 });
