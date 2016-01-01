@@ -114,22 +114,19 @@ This will result in the the following console output:
 ```
 
 
-Tests
------
+Development
+-----------
 
-Install the global dependancies with sudo permissions.
-
-```
-$ sudo npm install -g mocha
-$ sudo npm install -g should
-```
-
-Run mocha directly to see the test results.
+Clone the repo, cd to your local copy, install deps, and run gulp:
 
 ```
 $ cd void
-$ mocha
+$ npm install
+$ gulp
 ```
+
+Gulp will watch the lib and test directories, run tests, and display coverage data.
+
 
 __WARNING:__ Tests will fail unless you have the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `DISTRIBUTION_ID` variables configured in your environment!
 
