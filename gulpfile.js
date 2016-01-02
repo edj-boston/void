@@ -7,7 +7,7 @@ var coveralls = require('gulp-coveralls'),
 
 // instrument the code
 gulp.task('cover', function () {
-    return gulp.src(['lib/*.js'])
+    return gulp.src('lib/*.js')
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
 });
@@ -15,7 +15,7 @@ gulp.task('cover', function () {
 
 // Run tests and product coverage
 gulp.task('test', ['cover'], function () {
-    return gulp.src(['test/*.js'])
+    return gulp.src('test/*.js')
         .pipe(mocha())
         .pipe(istanbul.writeReports())
         .pipe(istanbul.enforceThresholds({
