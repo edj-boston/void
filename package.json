@@ -4,7 +4,7 @@
   "description": "A NodeJS module that intelligently invalidates your CloudFront Cache.",
   "main": "./lib/Void.js",
   "scripts": {
-    "test": "gulp coveralls"
+    "test": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -28,16 +28,17 @@
   },
   "homepage": "https://voidjs.com",
   "dependencies": {
-    "gulp": "^3.9.0",
-    "gulp-coveralls": "^0.1.4",
-    "gulp-eslint": "^1.1.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-mocha": "^2.2.0",
-    "should": "^8.0.2",
     "aws-sdk": "^2.2.14",
     "edj-eslint-rules": "^2.0.0",
     "file": "^0.2.2",
+    "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-david": "^0.4.1",
     "gulp-eslint": "^2.0.0",
-    "jquery-extend": "^2.0.3"
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sequence": "^0.4.5",
+    "jquery-extend": "^2.0.3",
+    "should": "^8.0.2"
   }
 }
