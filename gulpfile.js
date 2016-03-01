@@ -12,9 +12,12 @@ const coveralls = require('gulp-coveralls'),
 
 // Instrument the code
 gulp.task('cover', () => {
-    return gulp.src('lib/*.js')
-        .pipe(istanbul())
-        .pipe(istanbul.hookRequire());
+    return gulp.src([
+        'lib/*.js',
+        '!lib/FakeCloudFront.js'
+    ])
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire());
 });
 
 
