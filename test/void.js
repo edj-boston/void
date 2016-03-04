@@ -23,7 +23,7 @@ describe('Void#populateQueue', () => {
             cloudfront     : new FakeCF(),
             paths          : [ '/css/custom.css', '/index.html' ],
             dirs           : [ 'test/static' ],
-            poison         : [ '/test1.html', '/test2.html' ],
+            poison         : [ '/test1.html', '/test2.html', 'foobar.html' ],
             createInterval : 0,
             checkDelay     : 0,
             checkInterval  : 0,
