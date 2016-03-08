@@ -29,7 +29,7 @@
   "homepage": "https://voidjs.com",
   "dependencies": {
     "aws-sdk": "^2.2.14",
-    "edj-eslint-rules": "^2.0.0",
+    "edj-eslint-rules": "^2.1.0",
     "file": "^0.2.2",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.4",
