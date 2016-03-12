@@ -29,9 +29,7 @@ gulp.task('test', () => {
         }))
         .pipe(istanbul.writeReports())
         .pipe(istanbul.enforceThresholds({
-            thresholds : {
-                global : 8
-            }
+            thresholds : { global : 68 }
         }));
 });
 
