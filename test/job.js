@@ -41,15 +41,38 @@ describe('Job#construct', () => {
         job.status.should.equal('complete');
     });
 
-    it('should obey the timeout for creating new jobs', () => {
+    it('should obey the timeout for creating new jobs', done => {
+        let storedMessage = '';
         const job =  new Job({
             cloudfront    : new FakeCF(),
             paths         : [ '/index.html' ],
-            createTimeout : -1
+            createTimeout : -1,
+            logger        : message => {
+                storedMessage = message;
+            }
         });
         job.run();
         job.create();
         job.id.should.equal('');
+        storedMessage.should.equal(`[Job:${job.name}] Timeout: could not create invalidation after ${job.createTimeout} minutes`);
+        done();
+    });
+
+    it('should obey the timeout for checking existing jobs', done => {
+        let storedMessage = '';
+        const job =  new Job({
+            cloudfront   : new FakeCF(),
+            paths        : [ '/index.html' ],
+            checkTimeout : -1,
+            logger       : message => {
+                storedMessage = message;
+            }
+        });
+        job.run();
+        job.create();
+        job.check();
+        storedMessage.should.equal(`[Job:${job.name}] Timeout: stopped checking invalidation after ${job.checkTimeout} minutes`);
+        done();
     });
 
     it('should handle job errors', () => {
