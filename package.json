@@ -35,7 +35,7 @@
     "gulp-coveralls": "^0.1.4",
     "gulp-david": "^1.0.1",
     "gulp-eslint": "^2.0.0",
-    "gulp-istanbul": "^0.10.3",
+    "gulp-istanbul": "^1.1.2",
     "gulp-mocha": "^2.2.0",
     "gulp-sequence": "^0.4.5",
     "jquery-extend": "^2.0.3",
