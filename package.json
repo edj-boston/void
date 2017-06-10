@@ -33,7 +33,7 @@
     "file": "^0.2.2",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.4",
-    "gulp-david": "^0.4.1",
+    "gulp-david": "^1.0.1",
     "gulp-eslint": "^2.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.2.0",
