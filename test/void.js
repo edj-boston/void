@@ -13,7 +13,10 @@ describe('Void#populateQueue', () => {
             createInterval : 0,
             checkDelay     : 0,
             checkInterval  : 0,
-            callback       : done
+            callback       : done,
+            logger         : () => {
+                return;
+            }
         });
         v.queue.length.should.equal(6);
     });
@@ -27,7 +30,10 @@ describe('Void#populateQueue', () => {
             createInterval : 0,
             checkDelay     : 0,
             checkInterval  : 0,
-            callback       : done
+            callback       : done,
+            logger         : () => {
+                return;
+            }
         });
         v.queue.length.should.equal(5);
     });
@@ -55,7 +61,10 @@ describe('Void#populateQueue', () => {
                 createInterval : 0,
                 checkDelay     : 0,
                 checkInterval  : 0,
-                callback       : done
+                callback       : done,
+                logger         : () => {
+                    return;
+                }
             });
             v.runNextJob('Error');
         }).should.throw(`[Void:${name}] Error`);

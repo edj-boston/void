@@ -10,7 +10,10 @@ describe('Job#construct', () => {
             cloudfront     : new FakeCF(),
             createInterval : 0,
             checkDelay     : 0,
-            checkInterval  : 0
+            checkInterval  : 0,
+            logger         : () => {
+                return;
+            }
         });
         job.name.length.should.equal(5);
     });
@@ -21,7 +24,10 @@ describe('Job#construct', () => {
             paths          : [ '/index.html' ],
             createInterval : 0,
             checkDelay     : 0,
-            checkInterval  : 0
+            checkInterval  : 0,
+            logger         : () => {
+                return;
+            }
         });
         job.paths.length.should.not.equal(0);
     });
@@ -32,7 +38,10 @@ describe('Job#construct', () => {
             paths          : [ '/index.html' ],
             createInterval : 0,
             checkDelay     : 0,
-            checkInterval  : 0
+            checkInterval  : 0,
+            logger         : () => {
+                return;
+            }
         });
         job.run();
         job.create();
@@ -82,7 +91,10 @@ describe('Job#construct', () => {
             paths          : [ '/index.html' ],
             createInterval : 0,
             checkDelay     : 0,
-            checkInterval  : 0
+            checkInterval  : 0,
+            logger         : () => {
+                return;
+            }
         });
         job.run();
         job.create();
