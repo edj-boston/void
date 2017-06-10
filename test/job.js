@@ -41,6 +41,17 @@ describe('Job#construct', () => {
         job.status.should.equal('complete');
     });
 
+    it('should obey the timeout for creating new jobs', () => {
+        const job =  new Job({
+            cloudfront    : new FakeCF(),
+            paths         : [ '/index.html' ],
+            createTimeout : -1
+        });
+        job.run();
+        job.create();
+        job.id.should.equal('');
+    });
+
     it('should handle job errors', () => {
         const job =  new Job({
             name           : 'error',
