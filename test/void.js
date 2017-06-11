@@ -6,7 +6,7 @@ const FakeCF = require('../lib/FakeCloudFront'),
 
 describe('Void#populateQueue', () => {
     it('should have a queue of length 6', done => {
-        const v = new Void({
+        let v = new Void({
             cloudfront     : new FakeCF(),
             paths          : [ '/css/custom.css', '/index.html' ],
             dirs           : [ 'test/static' ],
@@ -19,10 +19,11 @@ describe('Void#populateQueue', () => {
             }
         });
         v.queue.length.should.equal(6);
+        v = undefined;
     });
 
     it('should have a queue of length 5 because of the poison list', done => {
-        const v = new Void({
+        let v = new Void({
             cloudfront     : new FakeCF(),
             paths          : [ '/css/custom.css', '/index.html' ],
             dirs           : [ 'test/static' ],
@@ -36,10 +37,11 @@ describe('Void#populateQueue', () => {
             }
         });
         v.queue.length.should.equal(5);
+        v = undefined;
     });
 
     it('should be capable of custom logging', done => {
-        const v = new Void({
+        let v = new Void({
             cloudfront     : new FakeCF(),
             createInterval : 0,
             checkDelay     : 0,
@@ -50,12 +52,13 @@ describe('Void#populateQueue', () => {
             }
         });
         v.log('Something').should.equal(`[Void:${v.name}] Something`);
+        v = undefined;
     });
 
     it('should be capable of custom errors', done => {
         const name = 'test';
         (function () {
-            const v = new Void({
+            let v = new Void({
                 name,
                 cloudfront     : new FakeCF(),
                 createInterval : 0,
@@ -67,6 +70,7 @@ describe('Void#populateQueue', () => {
                 }
             });
             v.runNextJob('Error');
+            v = undefined;
         }).should.throw(`[Void:${name}] Error`);
     });
 });

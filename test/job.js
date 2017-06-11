@@ -6,7 +6,7 @@ const FakeCF = require('../lib/FakeCloudFront'),
 
 describe('Job#construct', () => {
     it('should have a 5 character name property', () => {
-        const job =  new Job({
+        let job =  new Job({
             cloudfront     : new FakeCF(),
             createInterval : 0,
             checkDelay     : 0,
@@ -16,10 +16,11 @@ describe('Job#construct', () => {
             }
         });
         job.name.length.should.equal(5);
+        job = undefined;
     });
 
     it('should have at least one path item', () => {
-        const job =  new Job({
+        let job =  new Job({
             cloudfront     : new FakeCF(),
             paths          : [ '/index.html' ],
             createInterval : 0,
@@ -30,10 +31,11 @@ describe('Job#construct', () => {
             }
         });
         job.paths.length.should.not.equal(0);
+        job = undefined;
     });
 
     it('should re-check in progress jobs', () => {
-        const job =  new Job({
+        let job =  new Job({
             cloudfront     : new FakeCF(),
             paths          : [ '/index.html' ],
             createInterval : 0,
@@ -48,11 +50,12 @@ describe('Job#construct', () => {
         job.check();
         job.check();
         job.status.should.equal('complete');
+        job = undefined;
     });
 
     it('should obey the timeout for creating new jobs', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront    : new FakeCF(),
             paths         : [ '/index.html' ],
             createTimeout : -1,
@@ -64,12 +67,13 @@ describe('Job#construct', () => {
         job.create();
         job.id.should.equal('');
         storedMessage.should.equal(`[Job:${job.name}] Timeout: could not create invalidation after ${job.createTimeout} minutes`);
+        job = undefined;
         done();
     });
 
     it('should obey the timeout for creating new jobs and fire a callback', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront    : new FakeCF(),
             paths         : [ '/index.html' ],
             createTimeout : -1,
@@ -85,12 +89,13 @@ describe('Job#construct', () => {
         job.create();
         job.id.should.equal('');
         storedMessage.should.equal(`Timeout: could not create invalidation after ${job.createTimeout} minutes`);
+        job = undefined;
         done();
     });
 
     it('should handle generic errors in the callback for creating an invalidation', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront : new FakeCF({
                 throwCreateError : { message : 'some message' }
             }),
@@ -102,12 +107,13 @@ describe('Job#construct', () => {
         job.run();
         job.create();
         storedMessage.should.equal(`[Job:${job.name}] Failed: some message`);
+        job = undefined;
         done();
     });
 
     it('should handle TooManyInvalidationsInProgress error in the callback for creating an invalidation', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront : new FakeCF({
                 throwCreateError : { code : 'TooManyInvalidationsInProgress' }
             }),
@@ -119,12 +125,13 @@ describe('Job#construct', () => {
         job.run();
         job.create();
         storedMessage.should.equal(`[Job:${job.name}] Too many invalidations, retrying in ${job.createInterval} minute(s)`);
+        job = undefined;
         done();
     });
 
     it('should handle generic errors in the callback for checking an invalidation', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront : new FakeCF({
                 throwCheckError : { message : 'some message' }
             }),
@@ -137,12 +144,13 @@ describe('Job#construct', () => {
         job.create();
         job.check();
         storedMessage.should.equal(`[Job:${job.name}] Failed: some message`);
+        job = undefined;
         done();
     });
 
     it('should obey the timeout for checking existing jobs', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront   : new FakeCF(),
             paths        : [ '/index.html' ],
             checkTimeout : -1,
@@ -154,12 +162,13 @@ describe('Job#construct', () => {
         job.create();
         job.check();
         storedMessage.should.equal(`[Job:${job.name}] Timeout: stopped checking invalidation after ${job.checkTimeout} minutes`);
+        job = undefined;
         done();
     });
 
     it('should obey the timeout for checking existing jobs and fire a callback', done => {
         let storedMessage = '';
-        const job =  new Job({
+        let job =  new Job({
             cloudfront   : new FakeCF(),
             paths        : [ '/index.html' ],
             checkTimeout : -1,
@@ -175,11 +184,12 @@ describe('Job#construct', () => {
         job.create();
         job.check();
         storedMessage.should.equal(`Timeout: stopped checking invalidation after ${job.checkTimeout} minutes`);
+        job = undefined;
         done();
     });
 
     it('should handle job errors', () => {
-        const job =  new Job({
+        let job =  new Job({
             name           : 'error',
             cloudfront     : new FakeCF(),
             paths          : [ '/index.html' ],
@@ -195,11 +205,12 @@ describe('Job#construct', () => {
         job.check();
         job.check();
         job.status.should.equal('complete');
+        job = undefined;
     });
 
 
     it('should be able to log', done => {
-        const job =  new Job({
+        let job =  new Job({
             cloudfront : new FakeCF(),
             paths      : [ '/index.html' ],
             logger     : message => {
@@ -207,6 +218,7 @@ describe('Job#construct', () => {
             }
         });
         job.log('Something').should.equal(`[Job:${job.name}] Something`);
+        job = undefined;
         done();
     });
 });
