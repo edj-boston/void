@@ -39,6 +39,6 @@
     "gulp-mocha": "3.0.1",
     "gulp-sequence": "^0.4.5",
     "jquery-extend": "^2.0.3",
-    "should": "^8.0.2"
+    "should": "^11.2.1"
   }
 }
