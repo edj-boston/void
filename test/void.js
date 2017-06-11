@@ -4,9 +4,9 @@ const FakeCF = require('../lib/FakeCloudFront'),
     Void = require('../lib/Void.js');
 
 
-describe('Void#populateQueue', () => {
+describe('Void', () => {
     it('should have a queue of length 6', done => {
-        let v = new Void({
+        const v = new Void({
             cloudfront     : new FakeCF(),
             paths          : [ '/css/custom.css', '/index.html' ],
             dirs           : [ 'test/static' ],
@@ -19,11 +19,10 @@ describe('Void#populateQueue', () => {
             }
         });
         v.queue.length.should.equal(6);
-        v = undefined;
     });
 
     it('should have a queue of length 5 because of the poison list', done => {
-        let v = new Void({
+        const v = new Void({
             cloudfront     : new FakeCF(),
             paths          : [ '/css/custom.css', '/index.html' ],
             dirs           : [ 'test/static' ],
@@ -37,28 +36,28 @@ describe('Void#populateQueue', () => {
             }
         });
         v.queue.length.should.equal(5);
-        v = undefined;
     });
 
     it('should be capable of custom logging', done => {
-        let v = new Void({
+        let storedMessage = '';
+        const v = new Void({
             cloudfront     : new FakeCF(),
             createInterval : 0,
             checkDelay     : 0,
             checkInterval  : 0,
             callback       : done,
             logger         : message => {
-                return message;
+                storedMessage =  message;
             }
         });
-        v.log('Something').should.equal(`[Void:${v.name}] Something`);
-        v = undefined;
+        v.log('Something');
+        storedMessage.should.equal(`[Void:${v.name}] Something`);
     });
 
     it('should be capable of custom errors', done => {
         const name = 'test';
         (function () {
-            let v = new Void({
+            const v = new Void({
                 name,
                 cloudfront     : new FakeCF(),
                 createInterval : 0,
@@ -70,7 +69,6 @@ describe('Void#populateQueue', () => {
                 }
             });
             v.runNextJob('Error');
-            v = undefined;
         }).should.throw(`[Void:${name}] Error`);
     });
 });
