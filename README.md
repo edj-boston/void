@@ -141,8 +141,5 @@ Notes
 To do
 -----
 
-1. Istanbul
-1. More tests
-2. Surface granular `Job` properties in `Void` constructor for more flexibility
-3. `Void` event callbacks
-4. Document `Job` object
+1. `Void` event callbacks
+2. Document `Job` object
