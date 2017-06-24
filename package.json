@@ -29,17 +29,18 @@
   "homepage": "https://voidjs.com",
   "dependencies": {
     "aws-sdk": "^2.2.14",
+    "depcheck": "^0.6.7",
     "edj-eslint-rules": "^2.1.0",
     "file": "^0.2.2",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.4",
     "gulp-david": "^1.0.1",
+    "gulp-depcheck": "^1.2.0",
     "gulp-eslint": "^4.0.0",
     "gulp-istanbul": "1.1.2",
     "gulp-load-plugins": "^1.5.0",
     "gulp-mocha": "3.0.1",
     "gulp-sequence": "^0.4.5",
-    "jquery-extend": "^2.0.3",
-    "should": "^11.2.1"
+    "jquery-extend": "^2.0.3"
   }
 }
