@@ -1,31 +1,26 @@
 'use strict';
 
-const coveralls = require('gulp-coveralls'),
-    david       = require('gulp-david'),
-    eslint      = require('gulp-eslint'),
-    gulp        = require('gulp'),
-    istanbul    = require('gulp-istanbul'),
-    mocha       = require('gulp-mocha'),
-    rules       = require('edj-eslint-rules'),
-    sequence    = require('gulp-sequence');
+const g   = require('gulp-load-plugins')(),
+    gulp  = require('gulp'),
+    rules = require('edj-eslint-rules');
 
 
 // Instrument the code
 gulp.task('cover', () => {
     return gulp.src('lib/*.js')
-        .pipe(istanbul())
-        .pipe(istanbul.hookRequire());
+        .pipe(g.istanbul())
+        .pipe(g.istanbul.hookRequire());
 });
 
 
 // Run tests and product coverage
 gulp.task('test', () => {
     return gulp.src('test/*.js')
-        .pipe(mocha({
+        .pipe(g.mocha({
             require : [ 'should' ]
         }))
-        .pipe(istanbul.writeReports())
-        .pipe(istanbul.enforceThresholds({
+        .pipe(g.istanbul.writeReports())
+        .pipe(g.istanbul.enforceThresholds({
             thresholds : { global : 100 }
         }));
 });
@@ -34,7 +29,7 @@ gulp.task('test', () => {
 // Run tests and product coverage
 gulp.task('coveralls', () => {
     return gulp.src('coverage/lcov.info')
-        .pipe(coveralls());
+        .pipe(g.coveralls());
 });
 
 
@@ -46,33 +41,33 @@ gulp.task('lint', () => {
         'test/*.js',
         '!node_modules/**'
     ])
-    .pipe(eslint({
+    .pipe(g.eslint({
         extends       : 'eslint:recommended',
         env           : [ 'node', 'mocha' ],
         parserOptions : { 'ecmaVersion' : 6 },
         rules
     }))
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+    .pipe(g.eslint.format())
+    .pipe(g.eslint.failAfterError());
 });
 
 
 // Check deps with David service
 gulp.task('deps', () => {
     return gulp.src('package.json')
-        .pipe(david());
+        .pipe(g.david());
 });
 
 
 // Build macro
 gulp.task('build', done => {
-    sequence('cover', 'test', 'lint')(done);
+    g.sequence('cover', 'test', 'lint')(done);
 });
 
 
 // Macro for Travis
 gulp.task('travis', done => {
-    sequence('build', 'coveralls')(done);
+    g.sequence('build', 'coveralls')(done);
 });
 
 
