@@ -3,7 +3,7 @@
 const depcheck = require('depcheck'),
     g          = require('gulp-load-plugins')(),
     gulp       = require('gulp'),
-    rules      = require('edj-eslint-rules');
+    rules      = require('@edjboston/eslint-rules');
 
 
 // Instrument the code
