@@ -64,36 +64,6 @@ describe('Job', () => {
             job.run().create();
             storedMessage.should.equal(`Timeout: could not create invalidation after ${job.createTimeout} minutes`);
         });
-
-        it('should handle generic errors in the callback for creating an invalidation', () => {
-            let storedMessage = '';
-            const job =  new Job({
-                cloudfront : new FakeCF({
-                    throwCreateError : { message : 'some message' }
-                }),
-                paths  : [ '/index.html' ],
-                logger : message => {
-                    storedMessage = message;
-                }
-            });
-            job.run().create();
-            storedMessage.should.equal(`[Job:${job.name}] Failed: some message`);
-        });
-
-        it('should handle TooManyInvalidationsInProgress error in the callback for creating an invalidation', () => {
-            let storedMessage = '';
-            const job =  new Job({
-                cloudfront : new FakeCF({
-                    throwCreateError : { code : 'TooManyInvalidationsInProgress' }
-                }),
-                paths  : [ '/index.html' ],
-                logger : message => {
-                    storedMessage = message;
-                }
-            });
-            job.run().create();
-            storedMessage.should.equal(`[Job:${job.name}] Too many invalidations, retrying in ${job.createInterval} minute(s)`);
-        });
     });
 
     describe('#check', () => {
@@ -110,53 +80,6 @@ describe('Job', () => {
             });
             job.run().create().check().check();
             job.status.should.equal('complete');
-        });
-
-        it('should handle generic errors in the callback for checking an invalidation', () => {
-            let storedMessage = '';
-            const job =  new Job({
-                cloudfront : new FakeCF({
-                    throwCheckError : { message : 'some message' }
-                }),
-                paths  : [ '/index.html' ],
-                logger : message => {
-                    storedMessage = message;
-                }
-            });
-            job.run().create().check();
-            storedMessage.should.equal(`[Job:${job.name}] Failed: some message`);
-        });
-
-        it('should obey the timeout for checking existing jobs', () => {
-            let storedMessage = '';
-            const job =  new Job({
-                cloudfront   : new FakeCF(),
-                paths        : [ '/index.html' ],
-                checkTimeout : -1,
-                logger       : message => {
-                    storedMessage = message;
-                }
-            });
-            job.run().create().check();
-            storedMessage.should.equal(`[Job:${job.name}] Timeout: stopped checking invalidation after ${job.checkTimeout} minutes`);
-        });
-
-        it('should obey the timeout for checking existing jobs and fire a callback', () => {
-            let storedMessage = '';
-            const job =  new Job({
-                cloudfront   : new FakeCF(),
-                paths        : [ '/index.html' ],
-                checkTimeout : -1,
-                timeout      : (err, message) => {
-                    if (err) throw err;
-                    storedMessage = message;
-                },
-                logger : () => {
-                    return;
-                }
-            });
-            job.run().create().check();
-            storedMessage.should.equal(`Timeout: stopped checking invalidation after ${job.checkTimeout} minutes`);
         });
 
         it('should handle job errors', () => {
