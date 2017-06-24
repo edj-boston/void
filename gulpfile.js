@@ -35,20 +35,21 @@ gulp.task('coveralls', () => {
 
 // Lint as JS files (including this one)
 gulp.task('lint', () => {
-    return gulp.src([
+    const globs = [
         '*.js',
         'lib/*.js',
         'test/*.js',
         '!node_modules/**'
-    ])
-    .pipe(g.eslint({
-        extends       : 'eslint:recommended',
-        env           : [ 'node', 'mocha' ],
-        parserOptions : { 'ecmaVersion' : 6 },
-        rules
-    }))
-    .pipe(g.eslint.format())
-    .pipe(g.eslint.failAfterError());
+    ];
+
+    return gulp.src(globs)
+        .pipe(g.eslint({
+            extends       : 'eslint:recommended',
+            parserOptions : { 'ecmaVersion' : 6 },
+            rules
+        }))
+        .pipe(g.eslint.format())
+        .pipe(g.eslint.failAfterError());
 });
 
 
