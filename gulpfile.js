@@ -14,7 +14,7 @@ gulp.task('cover', () => {
 });
 
 
-// Run tests and product coverage
+// Run tests and produce coverage
 gulp.task('test', () => {
     return gulp.src('test/*.js')
         .pipe(g.mocha({
@@ -27,7 +27,7 @@ gulp.task('test', () => {
 });
 
 
-// Run tests and product coverage
+// Push coverage data to coveralls
 gulp.task('coveralls', () => {
     return gulp.src('coverage/lcov.info')
         .pipe(g.coveralls());
@@ -54,14 +54,14 @@ gulp.task('lint', () => {
 });
 
 
-// Check deps with David service
+// Check dep versions with David service
 gulp.task('david', () => {
     return gulp.src('package.json')
         .pipe(g.david());
 });
 
 
-// Check deps with David service
+// Check for unused deps with depcheck
 gulp.task('depcheck', g.depcheck({
     specials : [
         depcheck.special['gulp-load-plugins'],
