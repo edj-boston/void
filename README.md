@@ -51,23 +51,27 @@ var v = new Void();
 _Note:_ Use a capital "V" for the constructor and a single, lowercase "v" to avoid collision with the reserved word "void".
 
 
-Arguments
----------
-
-* __name:__ will default to a 5 character string for logging
-* __distribution:__ will default to `process.env.DISTRIBUTION_ID`
-* __paths:__ Array of path strings to be cleared (this will default to `"/*"` and clear the entire distribution)
-* __dirs:__ Array of directories to be scanned and added to `paths`
-* __poison:__ Array of path strings to be removed from `paths`
-* __maxPaths:__ Max number of paths per invalidation (defaults to 1000)
-* __maxJobs:__ Max number of simultaneous invalidations (defaults to 3)
-
-
-Properties
-----------
-
-* __queue:__ Queue of invalidations
-* __cloudfront:__ The AWS-SDK object
+Options
+-------
+| name | description | default |
+|------|-------------|---------|
+| `accessKeyId` | The AWS Access Key ID | `process.env.AWS_ACCESS_KEY_ID` |
+| `secretAccessKey` | The AWS secret access key | `process.env.AWS_SECRET_ACCESS_KEY` |
+| `name` | Random name for logging, can be overridden | `Math.random().toString(36).substr(2, 5).toUpperCase()` |
+| `distribution` | AWS distribution id | `process.env.DISTRIBUTION_ID` |
+| `paths` | Array of paths to be cleared | `[ '/*' ]` |
+| `dirs` | Array of local directories to be scanned and added to `paths` | `[]` |
+| `poison` | Array of paths to be removed from `paths` | `[]` |
+| `maxPaths` | Max number of paths per invalidation | `2` |
+| `maxJobs` | Max number of simultaneous `Job` objects | `3` |
+| `logger` | An optional log function | `console.log` |
+| `cloudfront` | A credentialed AWS-SDK object | `new AWS.CloudFront()` |
+| `createInterval` | Minutes to wait before retrying to create an invalidation | `2` |
+| `createTimeout` | Minutes to wait after 'running' status to quit trying to create an invalidation | `30` |
+| `checkDelay` | Minutes to wait before the first status check | `10` |
+| `checkInterval` | Minutes to wait between the 2nd and Nth status checks | `2` |
+| `checkTimeout` | Minutes to wait after the invalidation is created to quit and stop checking for progress | `20` |
+| `callback` | Function to call when completed | `null` |
 
 
 Example
