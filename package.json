@@ -1,6 +1,6 @@
 {
   "name": "void",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A NodeJS module that intelligently invalidates your CloudFront Cache.",
   "main": "./lib/Void.js",
   "scripts": {
